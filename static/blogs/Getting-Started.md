@@ -1,4 +1,9 @@
-# Getting Started 
+---
+title: Getting Started
+date: 2025-11-06
+description: Quick start guide on how to configure this blog site to your needs. It covers the necessary steps to set up and customize your blog site.
+category: "Guides"
+---
 
 This project is one of the quickest and barebones way of configuring and deploying your blog site. After the initial setup and deployment, everything else is automated all you have to do is just write your blogs into a markdown file and add metadata. Categorizing, sorting by date, rendering and styling is all handled for you.
 
@@ -11,9 +16,9 @@ This project is one of the quickest and barebones way of configuring and deployi
 ### Now, let's start customizing and personalizing your blog site. 
 
 4. Start by navigating to the `src\lib` directory and open the `config.json` file in your IDE.
-5. Edit the `config.json` file with your personal info.
+5. Edit the `config.json` file with your personal info. 
 
-![config-file](https://github.com/dagmawibabi/BareBlogs/blob/main/static/blog-images/GettingStarted/config-file.png)
+![image.png](/blog-images/GettingStarted/config-file.png)
 
 * Most of the configurations are self explanatory but the less obvious one is the `newBlogThreshold` key which represents the maximum number of days to consider a blog post as new. It can be set to any positive integer. So the default `10` means any blog post written within the last 10 days is considered as new and the `NEW` tag and the emerald highlight will be applied to the new blog posts.
 
