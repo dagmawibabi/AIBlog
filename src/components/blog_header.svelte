@@ -63,7 +63,7 @@
 					<div
 						class="flex items-center justify-center gap-x-3 rounded-full border-zinc-300 py-1 text-sm transition-all hover:border-black"
 					>
-						<a href={config.telegram} target="_blank" rel="noopener noreferrer">
+						<!-- <a href={config.telegram} target="_blank" rel="noopener noreferrer">
 							<Send
 								class="cursor-pointer text-sm  text-zinc-700 hover:scale-125 hover:text-cyan-500 dark:text-white dark:hover:text-cyan-500"
 								size={20}
@@ -86,14 +86,14 @@
 								class="cursor-pointer text-sm  text-zinc-700 hover:scale-125 hover:text-blue-500 dark:text-white dark:hover:text-blue-500"
 								size={20}
 							/>
-						</a>
+						</a> -->
 						<a href={config.github} target="_blank" rel="noopener noreferrer">
 							<Github
 								class="hover:text-black-500 cursor-pointer  text-sm text-zinc-700 hover:scale-125 dark:text-white"
 								size={20}
 							/>
 						</a>
-						<a href="mailto:{config.email}" target="_blank" rel="noopener noreferrer">
+						<!-- <a href="mailto:{config.email}" target="_blank" rel="noopener noreferrer">
 							<Mail
 								class="cursor-pointer text-sm  text-zinc-700 hover:scale-125 hover:text-green-500 dark:text-white dark:hover:text-green-500"
 								size={20}
@@ -109,7 +109,7 @@
 							>
 								LOL
 							</span>
-						</div>
+						</div> -->
 						<Button onclick={toggleMode} variant="ghost" size="icon">
 							<SunIcon
 								class="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 !transition-all dark:-rotate-90 dark:scale-0"

@@ -1,69 +1,101 @@
 <script lang="ts">
-	import Button from '$lib/components/ui/button/button.svelte';
+	import SectionTitle from '../components/section_title.svelte';
+	import BlogHeader from '../components/blog_header.svelte';
 	import config from '../lib/config.json';
-	import { SunIcon, MoonIcon } from 'lucide-svelte';
-	import { toggleMode } from 'mode-watcher';
+
+	type Blog = {
+		slug: string;
+		title: string;
+		date: string;
+		description: string;
+		category: string;
+	};
+
+	type Data = {
+		grouped: Record<string, Blog[]>;
+	};
+
+	export let data: Data;
+
+	function isNew(dateString: string) {
+		if (!dateString) return false;
+		const date = new Date(dateString);
+		const now = new Date();
+		const diffDays = (now.getTime() - date.getTime()) / (1000 * 60 * 60 * 24);
+		return diffDays <= config.newBlogThreshold; // mark as new if ≤ {config.newBlogThreshold} days old
+	}
 </script>
 
 <svelte:head>
-	<title>{config.name}</title>
+	<title>Blogs | {config.name}</title>
 </svelte:head>
 
 <div
-	class="no-scrollbar relative mx-auto flex h-screen w-[96%] items-center justify-center pt-4 md:w-2/5"
+	class="no-scrollbar relative mx-auto w-[96%] pb-56 pt-4 md:w-[96%] lg:w-1/2 xl:w-1/2 2xl:w-1/2"
 >
-	<div class="flex flex-col gap-y-2">
-		<div class="flex items-center justify-between">
-			<div class="text-xl font-semibold">BareBlogs</div>
+	<!-- Header -->
+	<BlogHeader />
 
-			<Button onclick={toggleMode} variant="ghost" size="icon">
-				<SunIcon
-					class="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 !transition-all dark:-rotate-90 dark:scale-0"
-				/>
-				<MoonIcon
-					class="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 !transition-all dark:rotate-0 dark:scale-100"
-				/>
-				<span class="sr-only">Toggle theme</span>
-			</Button>
-		</div>
-		<div class="pb-5">
-			This is one of the quickest ways to create and setup a blog site. All you have to do is fork
-			<a href="https://github.com/dagmawibabi/bareblogs" target="_blank" class="text-blue-600"
-				>this repository
+	<!-- Nav -->
+	<div class="flex flex-wrap justify-start gap-2 pb-5 pt-3">
+		{#each Object.entries(data.grouped) as [category, blogs]}
+			<a href={'#' + category}>
+				<div
+					class="cursor-pointer rounded-full bg-neutral-100 px-3 py-1 text-sm italic text-zinc-600 hover:bg-neutral-200 hover:text-black dark:bg-zinc-900 dark:text-neutral-400 dark:hover:bg-neutral-800"
+				>
+					{category}
+				</div>
 			</a>
-			and deploy it to a hosting provider like
-			<a href="https://www.vercel.com" target="_blank" class="text-blue-600">Vercel</a>. This
-			project is completely open-source and free to use. It's also very easy and straightforward to
-			configure, use and customize. You will find a sample blog profile and guide on how to
-			configure and customize the blog site in the next page.
-		</div>
-		<div class="pb-5">
-			The project is built using <a href="https://svelte.dev" target="_blank" class="text-blue-600"
-				>SvelteKit</a
-			>
-			and
-			<a href="https://tailwindcss.com" target="_blank" class="text-blue-600">TailwindCSS</a>
-			with a few
-			<a href="https://www.shadcn-svelte.com" target="_blank" class="text-blue-600">ShadCN</a> components.
-			It has dark and light mode support and is responsive. You can simply write your blog posts in markdown,
-			add a few metadata and the site will automatically add it to the feed, categorize it in the appropriate
-			category and add your tags for quick navigations.
-		</div>
-		<div class="pb-5">
-			If this is your first time dealing with Markdown, I recommend you checkout this <a
-				href="https://www.markdownguide.org/"
-				target="_blank"
-				class="text-blue-600">introduction to Markdown</a
-			>
-			and then checking out
-			<a href="https://commonmark.org/help" target="_blank" class="text-blue-600">
-				this cheatsheet</a
-			> for the syntax. Enjoy writing and consider starring the repo!
-		</div>
-		<Button href="https://github.com/dagmawibabi/bareblogs" target="_blank" variant="secondary"
-			>Clone Repository</Button
-		>
-		<Button class="bg-emerald-500 text-black hover:bg-emerald-400" href="/write">Write Blog</Button>
-		<Button href="/blog">Goto Blogs</Button>
+		{/each}
 	</div>
+
+	<!-- Blogs -->
+	{#each Object.entries(data.grouped) as [category, blogs]}
+		<div class="pb-10">
+			<div id={category}>
+				<SectionTitle title={category} />
+			</div>
+			<div class="pb-2 pl-10">
+				<!-- <div class="h-7 border-l border-dashed border-zinc-900"></div> -->
+			</div>
+
+			<div class="grid grid-cols-1 justify-evenly gap-x-2 gap-y-2 md:grid-cols-2">
+				{#each blogs as blog, i}
+					<a href={`/blog/${blog.slug}`}>
+						<div
+							class="group h-full w-full overflow-clip rounded border p-2 px-3 shadow-sm transition-all hover:border-zinc-400 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700"
+							class:border-emerald-500={isNew(blog.date)}
+							class:dark:border-emerald-800={isNew(blog.date)}
+							class:border-zinc-300={!isNew(blog.date)}
+							class:bg-emerald-50={isNew(blog.date)}
+							class:bg-neutral-50={!isNew(blog.date)}
+						>
+							<div class="flex items-center justify-between pb-1 text-xs">
+								<div class="italic text-neutral-500">
+									{new Date(blog.date).toDateString()}
+								</div>
+								{#if isNew(blog.date)}
+									<div class="rounded-full px-2 py-[0.8px] text-emerald-500">New</div>
+								{/if}
+							</div>
+							<div class="flex items-center gap-2 pb-2">
+								<div class="flex w-full items-center justify-between">
+									<div
+										class="text-md font-semibold dark:text-neutral-300 dark:group-hover:text-white"
+									>
+										{blog.title}
+									</div>
+								</div>
+							</div>
+							<div
+								class="text-sm text-neutral-500 group-hover:text-neutral-800 dark:group-hover:text-neutral-400"
+							>
+								{blog.description}
+							</div>
+						</div>
+					</a>
+				{/each}
+			</div>
+		</div>
+	{/each}
 </div>

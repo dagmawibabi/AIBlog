@@ -54,6 +54,7 @@ date: 2025-01-15
 category: 'Category Name'
 description: 'A short description for SEO and blog previews'
 header: /blog-images/<BlogName>/header.png
+llm: 'Anthropic/Claude Opus 4'
 ---
 ```
 
@@ -64,6 +65,7 @@ header: /blog-images/<BlogName>/header.png
 - `category` (required): Category in quotes (e.g., "Guides", "Journal", "Tech")
 - `description` (required): Brief description for SEO and blog previews
 - `header` (recommended): Path to header image for the blog card
+- `llm` (required): The specific LLM used to generate this blog post (e.g., "Anthropic/Claude Opus 4", "OpenAI/GPT-4o", "Google/Gemini 2.0")
 
 ### Content Structure
 
@@ -209,6 +211,7 @@ date: 2025-01-15
 category: "Guides"
 description: "A comprehensive guide on how to write and publish blog posts in this project"
 header: /blog-images/MyFirstBlog/header.png
+llm: "Anthropic/Claude Opus 4"
 ---
 
 ![Blog Setup](/blog-images/MyFirstBlog/setup.png)

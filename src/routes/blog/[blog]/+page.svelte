@@ -22,7 +22,7 @@
 >
 	<!-- Header -->
 	<div class="sticky top-0 mb-3 bg-white dark:bg-zinc-950">
-		<BlogHeader showDescription={false} link="/blog" />
+		<BlogHeader showDescription={false} link="/" />
 	</div>
 
 	<!-- Metadata -->
