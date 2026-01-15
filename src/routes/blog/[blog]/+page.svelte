@@ -30,11 +30,11 @@
 		{new Date(data.meta.date).toDateString()}
 	</div>
 	<div class="flex items-center justify-between pb-2">
-		<div
+		<!-- <div
 			class="prose prose-h1:text-2xl prose-h1:font-semibold dark:text-white dark:prose-headings:text-white"
 		>
 			<h1>{data.meta.title}</h1>
-		</div>
+		</div> -->
 		<div class="hidden text-sm italic dark:text-neutral-400 md:flex">
 			{new Date(data.meta.date).toDateString()}
 		</div>
