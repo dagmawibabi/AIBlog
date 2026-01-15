@@ -1,7 +1,7 @@
 ---
 title: AGENTS.md and SKILLS.md - The Complete Guide
 date: 2026-01-15
-category: 'AI & Development'
+category: 'AI'
 description: 'A comprehensive guide to AGENTS.md and SKILLS.md - the open standards for configuring AI coding agents. Learn setup, usage, best practices, and how they impact context windows.'
 ---
 
