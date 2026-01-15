@@ -1,7 +1,7 @@
 ---
 title: 'A Journey Through Early Christian Church History: From the Apostolic Age to the Modern Era'
 date: '2026-01-15'
-category: 'History'
+category: 'Christianity'
 description: "An exhaustive exploration of Christian church history spanning two millennia, tracing the faith's journey from its Jewish roots in first-century Palestine through the apostolic age, persecution, theological councils, medieval power struggles, Reformation, and into the modern ecumenical movement."
 ---
 
