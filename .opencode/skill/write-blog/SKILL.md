@@ -50,6 +50,20 @@ Write as a genuine human being sharing your thoughts, discoveries, and experienc
 - "I learned this from [person/project]..."
 - "Here's how I do X..."
 
+## Mandatory Web Search Before Writing
+
+**ALWAYS perform a web search BEFORE writing any blog content.**
+
+This is a mandatory requirement for every blog post. Before writing:
+
+1. Search for current information on your topic using relevant search terms
+2. Check for recent news, announcements, or developments
+3. Find official sources (company blogs, documentation, research papers)
+4. Verify information is up-to-date and accurate
+5. Gather links to cite and reference in your content
+
+This ensures your blog posts are current, accurate, and provide value with fresh perspectives.
+
 ## Blog Post Format
 
 ### File Location
